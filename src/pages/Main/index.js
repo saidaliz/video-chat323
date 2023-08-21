@@ -3,6 +3,7 @@ import socket from '../../socket';
 import ACTIONS from '../../socket/actions';
 import {useHistory} from 'react-router';
 import {v4} from 'uuid';
+import  "./Lobby.css";
 
 export default function Main() {
   const history = useHistory();
@@ -18,9 +19,10 @@ export default function Main() {
   }, []);
 
   return (
-    <div ref={rootNode}>
-      <h1>Available Rooms</h1>
-
+<div className='bg'>
+    <div className='chat' ref={rootNode}>
+    <h1 className='create-lobby'>Create Lobby</h1>
+<div className='yuz'>
       <ul>
         {rooms.map(roomID => (
           <li key={roomID}>
@@ -31,10 +33,15 @@ export default function Main() {
           </li>
         ))}
       </ul>
-
-      <button onClick={() => {
+      <div className='center'>
+      <button className='pusher' onClick={() => {
         history.push(`/room/${v4()}`);
       }}>Create New Room</button>
+      </div>
     </div>
+</div>
+
+
+  </div>
   );
 }
